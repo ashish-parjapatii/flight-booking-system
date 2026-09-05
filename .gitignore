@@ -41,3 +41,6 @@ build/
 .idea/
 .env
 *.log
+
+### Learning Resources ###
+/docs/books/
