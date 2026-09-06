@@ -3,7 +3,7 @@ package com.ashish.booking.domain.exception;
 import com.ashish.booking.domain.BookingReference;
 import com.ashish.booking.domain.BookingStatus;
 
-public class IllegalBookingTransitionException extends BookingException {
+public class IllegalBookingTransitionException extends BusinessRuleException {
 
     private final BookingReference reference;
     private final BookingStatus from;

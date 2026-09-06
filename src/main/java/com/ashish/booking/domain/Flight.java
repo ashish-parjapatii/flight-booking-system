@@ -97,9 +97,16 @@ public class Flight {
 
     public void cancel() {
         if (status == FlightStatus.DEPARTED) {
-            throw new IllegalStateException("Cannot cancel a departed flight");
+            throw new IllegalFlightTransitionException(flightNumber, status, FlightStatus.CANCELLED);
         }
         this.status = FlightStatus.CANCELLED;
+    }
+
+    public void markDeparted() {
+        if (status != FlightStatus.SCHEDULED) {
+            throw new IllegalFlightTransitionException(flightNumber, status, FlightStatus.DEPARTED);
+        }
+        this.status = FlightStatus.DEPARTED;
     }
 
     private int rowsAvailable() {

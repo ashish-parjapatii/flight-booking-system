@@ -3,7 +3,7 @@ package com.ashish.booking.domain.exception;
 import com.ashish.booking.domain.FlightNumber;
 import com.ashish.booking.domain.SeatNumber;
 
-public class SeatAlreadyBookedException extends BookingException {
+public class SeatAlreadyBookedException extends BusinessRuleException {
     private final FlightNumber flightNumber;
     private final SeatNumber seat;
 

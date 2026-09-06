@@ -46,10 +46,24 @@ class FlightTest {
     }
 
     @Test
+    void cannotCancelADepartedFlight() {
+        flight.markDeparted();
+        assertThatThrownBy(flight::cancel)
+                .isInstanceOf(IllegalFlightTransitionException.class);
+    }
+
+    @Test
     void cannotBookCancelledFlight() {
         flight.cancel();
         assertThatThrownBy(() -> flight.reserveSeat(SeatNumber.parse("12A")))
             .isInstanceOf(FlightNotBookableException.class);
+    }
+
+    @Test
+    void cannotDepartACancelledFlight() {
+        flight.cancel();
+        assertThatThrownBy(flight::markDeparted)
+                .isInstanceOf(IllegalFlightTransitionException.class);
     }
 
     @Test
